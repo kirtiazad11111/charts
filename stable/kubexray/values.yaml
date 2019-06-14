@@ -7,7 +7,7 @@ replicaCount: 1
 imagePullSecrets:
 
 image:
-  repository: docker.bintray.io/kubexray
+  repository: kirtiazad11111/kubexray
   # Note that by default we use appVersion to get image tag
   # tag:
   pullPolicy: Always
@@ -31,31 +31,6 @@ networkpolicy:
       - {}
     ingress:
       - {}
-
-# Set kubexray scanning policy
-scanPolicy:
-  unscanned:
-    # Whitelist namespaces
-    whitelistNamespaces: "kube-system,kubexray"
-    # Set for unscanned deployments delete/scaledown/ignore
-    deployments: ignore
-    # Set for unscanned statefulsets delete/scaledown/ignore
-    statefulSets: ignore
-  security:
-    # Whitelist namespaces
-    whitelistNamespaces: "kube-system,kubexray"
-    # Set for deployments with security issues delete/scaledown/ignore
-    deployments: ignore
-    # Set for statefulsets with security issues delete/scaledown/ignore
-    statefulSets: ignore
-  license:
-    # Whitelist namespaces
-    whitelistNamespaces: "kube-system,kubexray"
-    # Set for deployments with license issues delete/scaledown/ignore
-    deployments: ignore
-    # Set for statefulsets with license issues delete/scaledown/ignore
-    statefulSets: ignore
-
 # Set which user:group you want kubexray to be run with
 # kubexray docker image already comes preset with rootless user
 securityContext:
@@ -96,6 +71,8 @@ ingress:
 
 env:
   logLevel: "INFO"
+ # For cron expression https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format
+  cron: "0 */2 * * * *"
 
 # Set resources
 resources:
