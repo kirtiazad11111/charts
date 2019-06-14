@@ -40,6 +40,8 @@ spec:
           env:
           - name: KUBE_XRAY_LOG_LEVEL
             value: {{ .Values.env.logLevel }}
+          - name: KUBE_XRAY_CRON
+            value: {{ .Values.env.cron }}
           ports:
             - name: http
               containerPort: 8765
