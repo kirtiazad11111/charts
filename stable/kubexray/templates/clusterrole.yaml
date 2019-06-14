@@ -20,6 +20,10 @@ rules:
       - deployments
       - jobs
       - namespaces
+      - daemonsets
+      - replicasets
+      - cronjobs
+      - jobs
     verbs:
       - "*"
 {{ end }}
